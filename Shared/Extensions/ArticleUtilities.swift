@@ -47,11 +47,12 @@ extension Article {
 	}
 	
 	var preferredLink: String? {
-		if let url = url, !url.isEmpty {
-			return url
-		}
-		if let externalURL = externalURL, !externalURL.isEmpty {
-			return externalURL
+		let sources = AppDefaults.preferExternalArticleUrls ? [externalURL, url] : [url, externalURL]
+
+		for source in sources {
+			if let source = source, !source.isEmpty {
+				return source
+			}
 		}
 		return nil
 	}

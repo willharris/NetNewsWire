@@ -34,6 +34,7 @@ struct AppDefaults {
 		static let importOPMLAccountID = "importOPMLAccountID"
 		static let exportOPMLAccountID = "exportOPMLAccountID"
 		static let defaultBrowserID = "defaultBrowserID"
+		static let preferExternalArticleUrls = "preferExternalArticleUrls"
 
 		// Hidden prefs
 		static let showDebugMenu = "ShowDebugMenu"
@@ -246,6 +247,15 @@ struct AppDefaults {
 		}
 	}
 
+	static var preferExternalArticleUrls: Bool {
+		get {
+			return bool(for: Key.preferExternalArticleUrls)
+		}
+		set {
+			setBool(for: Key.preferExternalArticleUrls, newValue)
+		}
+	}
+	
 	static func registerDefaults() {
 		#if DEBUG
  		let showDebugMenu = true
